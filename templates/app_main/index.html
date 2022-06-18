@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="banner">
+    <div class="imgBx">
+        <img src="{% static 'css/banners/cart1.jpg' %}" class="active" alt="">
+        <img src="{% static 'css/banners/cart2.jpg' %}" alt="">
+        <img src="{% static 'css/banners/cart3.jpg' %}" alt="">
+        <img src="{% static 'css/banners/cart4.jpg' %}" alt="">
+    </div>
+</section>
+
+
+<script type="text/javascript">
+    let imgBx = document.querySelector('.imgBx');
+    let slides = imgBx.getElementsByTagName('img');
+
+    let i = 0;
+    const len = slides.length
+    const sec = 10
+
+    function nextSlide() {
+        slides[i].classList.toggle('active')
+        i = (i + 1) % len
+        slides[i].classList.toggle('active')
+    }
+
+    window.onload = setInterval(() => nextSlide(), sec * 1000);
+</script>
+
+
+{% endblock content %}
